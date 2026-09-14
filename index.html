@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#0a0a0c">
+<title>伏虎 · 伏虎.cc</title>
+<meta name="description" content="伏虎 —— 伏虎.cc（xn--voqu06k.cc）。降龙伏虎，一网打尽。">
+<meta name="keywords" content="伏虎,伏虎.cc,伏虎cc,fuhu">
+<meta name="author" content="ciallo0721-cmd">
+<link rel="canonical" href="https://xn--voqu06k.cc/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="伏虎">
+<meta property="og:title" content="伏虎 · 伏虎.cc">
+<meta property="og:description" content="降龙伏虎，一网打尽。">
+<meta property="og:url" content="https://xn--voqu06k.cc/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="伏虎 · 伏虎.cc">
+<meta name="twitter:description" content="降龙伏虎，一网打尽。">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%85%3C/text%3E%3C/svg%3E">
+
+<style>
+  :root {
+    --bg: #08080b;
+    --bg-2: #101014;
+    --ink: #f2ece1;
+    --ink-dim: #a49c8e;
+    --gold: #e8b04b;
+    --gold-2: #ffd98a;
+    --red: #c2410c;
+    --glass: rgba(255, 255, 255, 0.045);
+    --line: rgba(232, 176, 75, 0.18);
+    --radius: 18px;
+    --font: "PingFang SC", "Microsoft YaHei", "Hiragino Sans GB", system-ui, -apple-system, "Segoe UI", sans-serif;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font);
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- 背景层 ---------- */
+  .bg-layer {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .bg-layer::before {
+    content: "";
+    position: absolute;
+    inset: -20%;
+    background:
+      radial-gradient(38% 34% at 18% 14%, rgba(194, 65, 12, 0.28), transparent 68%),
+      radial-gradient(32% 30% at 84% 22%, rgba(232, 176, 75, 0.20), transparent 70%),
+      radial-gradient(46% 40% at 50% 108%, rgba(120, 53, 15, 0.30), transparent 72%);
+    filter: blur(18px);
+    animation: drift 22s ease-in-out infinite alternate;
+  }
+
+  @keyframes drift {
+    0%   { transform: translate3d(0, 0, 0) scale(1); }
+    100% { transform: translate3d(2%, -3%, 0) scale(1.08); }
+  }
+
+  .grid-lines {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(232, 176, 75, 0.055) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(232, 176, 75, 0.055) 1px, transparent 1px);
+    background-size: 62px 62px;
+    mask-image: radial-gradient(circle at 50% 32%, #000 8%, transparent 76%);
+    -webkit-mask-image: radial-gradient(circle at 50% 32%, #000 8%, transparent 76%);
+  }
+
+  #dust { position: absolute; inset: 0; width: 100%; height: 100%; }
+
+  /* ---------- 布局 ---------- */
+  .wrap {
+    position: relative;
+    z-index: 1;
+    width: 100%;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 0 22px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ---------- 顶部导航 ---------- */
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px 0;
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    font-size: 15px;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    display: grid;
+    place-items: center;
+    font-size: 17px;
+    background: linear-gradient(145deg, rgba(232, 176, 75, 0.22), rgba(194, 65, 12, 0.18));
+    border: 1px solid var(--line);
+    box-shadow: 0 0 22px rgba(232, 176, 75, 0.16) inset;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 6px;
+    font-size: 13.5px;
+  }
+
+  .nav-links a {
+    color: var(--ink-dim);
+    text-decoration: none;
+    padding: 7px 13px;
+    border-radius: 999px;
+    transition: color .22s, background .22s;
+  }
+
+  .nav-links a:hover {
+    color: var(--gold-2);
+    background: var(--glass);
+  }
+
+  /* ---------- 主视觉 ---------- */
+  .hero {
+    text-align: center;
+    padding: 58px 0 42px;
+  }
+
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    letter-spacing: 0.24em;
+    color: var(--gold);
+    border: 1px solid var(--line);
+    background: var(--glass);
+    padding: 7px 16px;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--gold);
+    box-shadow: 0 0 10px var(--gold);
+    animation: pulse 1.9s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50%      { opacity: .35; transform: scale(.75); }
+  }
+
+  h1.title {
+    margin: 26px 0 0;
+    font-size: clamp(72px, 17vw, 168px);
+    line-height: 0.94;
+    font-weight: 900;
+    letter-spacing: 0.06em;
+    background: linear-gradient(178deg, #fff6e2 6%, var(--gold-2) 34%, var(--gold) 60%, var(--red) 108%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 12px 40px rgba(232, 176, 75, 0.24));
+    animation: rise .95s cubic-bezier(.2, .8, .25, 1) both;
+  }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(26px); filter: blur(9px); }
+    to   { opacity: 1; transform: none; }
+  }
+
+  .tagline {
+    margin-top: 20px;
+    font-size: clamp(14px, 2.4vw, 17px);
+    color: var(--ink-dim);
+    letter-spacing: 0.32em;
+    text-indent: 0.32em;
+  }
+
+  /* ---------- 域名条 ---------- */
+  .domain-bar {
+    margin: 36px auto 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 9px 9px 9px 22px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    box-shadow: 0 18px 50px rgba(0, 0, 0, 0.45);
+    width: fit-content;
+    max-width: 100%;
+  }
+
+  .domain-text {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: clamp(15px, 2.6vw, 19px);
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--ink);
+    word-break: break-all;
+  }
+
+  .copy-btn {
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: 13.5px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 10px 20px;
+    border-radius: 999px;
+    color: #1a1005;
+    background: linear-gradient(135deg, var(--gold-2), var(--gold));
+    transition: transform .18s, box-shadow .22s, background .22s;
+    box-shadow: 0 6px 20px rgba(232, 176, 75, 0.28);
+    white-space: nowrap;
+  }
+
+  .copy-btn:hover { transform: translateY(-1px); box-shadow: 0 10px 26px rgba(232, 176, 75, 0.4); }
+  .copy-btn:active { transform: translateY(0) scale(.97); }
+  .copy-btn.done { background: linear-gradient(135deg, #86efac, #22c55e); color: #052e16; }
+
+  .puny {
+    margin-top: 12px;
+    font-size: 12px;
+    color: #6f6759;
+    font-family: ui-monospace, Consolas, monospace;
+    letter-spacing: 0.04em;
+  }
+
+  /* ---------- 卡片区 ---------- */
+  .section-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin: 66px 0 20px;
+    font-size: 12px;
+    letter-spacing: 0.26em;
+    color: var(--gold);
+    text-transform: uppercase;
+  }
+
+  .section-title::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--line), transparent);
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(232px, 1fr));
+    gap: 14px;
+  }
+
+  .card {
+    position: relative;
+    display: block;
+    padding: 22px 20px;
+    border-radius: var(--radius);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    background: var(--glass);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-decoration: none;
+    color: inherit;
+    overflow: hidden;
+    transition: transform .26s cubic-bezier(.2, .8, .25, 1), border-color .26s, background .26s;
+  }
+
+  .card::after {
+    content: "";
+    position: absolute;
+    top: 0; left: -60%;
+    width: 45%; height: 100%;
+    background: linear-gradient(100deg, transparent, rgba(255, 217, 138, 0.12), transparent);
+    transition: left .6s ease;
+  }
+
+  .card:hover { transform: translateY(-4px); border-color: var(--line); background: rgba(255, 255, 255, 0.07); }
+  .card:hover::after { left: 118%; }
+
+  .card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+  }
+
+  .card-icon {
+    width: 40px; height: 40px;
+    border-radius: 12px;
+    display: grid;
+    place-items: center;
+    font-size: 18px;
+    background: linear-gradient(145deg, rgba(232, 176, 75, 0.16), rgba(194, 65, 12, 0.12));
+    border: 1px solid var(--line);
+  }
+
+  .card-tag {
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--gold);
+    border: 1px solid var(--line);
+    padding: 3px 10px;
+    border-radius: 999px;
+    opacity: .85;
+  }
+
+  .card h3 { font-size: 16.5px; font-weight: 700; letter-spacing: 0.04em; }
+
+  .card p {
+    margin-top: 6px;
+    font-size: 13px;
+    color: var(--ink-dim);
+    line-height: 1.65;
+  }
+
+  .card .go {
+    margin-top: 14px;
+    font-size: 12.5px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    opacity: .8;
+  }
+
+  /* ---------- 倒计时 ---------- */
+  .countdown {
+    margin-top: 14px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    padding: 26px 20px;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+    background:
+      linear-gradient(180deg, rgba(232, 176, 75, 0.06), rgba(255, 255, 255, 0.02));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    text-align: center;
+  }
+
+  .cd-cell { position: relative; }
+
+  .cd-cell + .cd-cell::before {
+    content: "";
+    position: absolute;
+    left: -6px; top: 12%;
+    height: 76%; width: 1px;
+    background: linear-gradient(180deg, transparent, var(--line), transparent);
+  }
+
+  .cd-num {
+    font-family: ui-monospace, "SF Mono", Consolas, monospace;
+    font-size: clamp(26px, 6vw, 42px);
+    font-weight: 700;
+    color: var(--gold-2);
+    line-height: 1.15;
+    font-variant-numeric: tabular-nums;
+    text-shadow: 0 0 26px rgba(232, 176, 75, 0.3);
+  }
+
+  .cd-label {
+    margin-top: 4px;
+    font-size: 11.5px;
+    letter-spacing: 0.2em;
+    color: var(--ink-dim);
+  }
+
+  .cd-note {
+    margin-top: 16px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #6f6759;
+  }
+
+  .cd-note b { color: var(--ink-dim); font-weight: 600; }
+
+  /* ---------- 页脚 ---------- */
+  footer {
+    position: relative;
+    z-index: 1;
+    margin-top: 78px;
+    padding: 30px 22px 38px;
+    text-align: center;
+    font-size: 12.5px;
+    color: #5f584d;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
+
+  footer a { color: var(--ink-dim); text-decoration: none; }
+  footer a:hover { color: var(--gold); }
+
+  .foot-row { display: flex; gap: 8px 18px; justify-content: center; flex-wrap: wrap; }
+
+  /* ---------- 入场 ---------- */
+  .reveal { opacity: 0; transform: translateY(20px); transition: opacity .7s ease, transform .7s cubic-bezier(.2, .8, .25, 1); }
+  .reveal.on { opacity: 1; transform: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+    .reveal { opacity: 1; transform: none; }
+  }
+
+  @media (max-width: 560px) {
+    .nav-links { display: none; }
+    .hero { padding: 40px 0 30px; }
+    .domain-bar { padding: 12px 12px; border-radius: 20px; flex-direction: column; gap: 12px; width: 100%; }
+    .copy-btn { width: 100%; }
+    .section-title { margin-top: 52px; }
+    .countdown { grid-template-columns: repeat(2, 1fr); gap: 20px 12px; padding: 22px 14px; }
+    .cd-cell + .cd-cell::before { display: none; }
+    .cd-cell:nth-child(3)::before,
+    .cd-cell:nth-child(4)::before { content: ""; display: block; }
+  }
+</style>
+</head>
+<body>
+
+<div class="bg-layer">
+  <div class="grid-lines"></div>
+  <canvas id="dust"></canvas>
+</div>
+
+<div class="wrap">
+  <header>
+    <div class="brand">
+      <div class="brand-mark">虎</div>
+      <span>伏虎</span>
+    </div>
+    <nav class="nav-links">
+      <a href="#domains">入口</a>
+      <a href="#life">域名</a>
+      <a href="https://github.com/ciallo0721-cmd" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="eyebrow"><span class="dot"></span>FU HU · SINCE 2026</div>
+      <h1 class="title">伏虎</h1>
+      <div class="tagline">降龙伏虎 · 一网打尽</div>
+
+      <div class="domain-bar">
+        <span class="domain-text" id="domain-main">伏虎.cc</span>
+        <button class="copy-btn" id="copy-btn" type="button">复制域名</button>
+      </div>
+      <div class="puny" id="domain-puny">PUNYCODE / xn--voqu06k.cc</div>
+    </section>
+
+    <div class="section-title reveal" id="domains">站点入口 · LINKS</div>
+    <div class="cards">
+      <a class="card reveal" href="https://ciallo0721-cmd.top" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon">🏠</div>
+          <span class="card-tag">MAIN</span>
+        </div>
+        <h3>个人主站</h3>
+        <p>ciallo0721-cmd.top — 项目、博客与日常折腾的落脚点。</p>
+        <div class="go">前往 →</div>
+      </a>
+
+      <a class="card reveal" href="https://xn--d6qr7hrtcb06avk0aljka.top" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon">🌸</div>
+          <span class="card-tag">FAN SITE</span>
+        </div>
+        <h3>塔菲应援站</h3>
+        <p>关注永雏塔菲谢谢喵 —— 应援、工具集与同好聚集地。</p>
+        <div class="go">前往 →</div>
+      </a>
+
+      <a class="card reveal" href="https://github.com/ciallo0721-cmd" target="_blank" rel="noopener">
+        <div class="card-top">
+          <div class="card-icon">⌨️</div>
+          <span class="card-tag">CODE</span>
+        </div>
+        <h3>GitHub</h3>
+        <p>开源仓库与各种小玩意的施工现场。</p>
+        <div class="go">前往 →</div>
+      </a>
+
+      <a class="card reveal" href="mailto:nb666mc26@outlook.com">
+        <div class="card-top">
+          <div class="card-icon">✉️</div>
+          <span class="card-tag">CONTACT</span>
+        </div>
+        <h3>联系我</h3>
+        <p>合作、交换友链，或者单纯来打个招呼都行。</p>
+        <div class="go">写信 →</div>
+      </a>
+    </div>
+
+    <div class="section-title reveal" id="life">域名保质期 · UPTIME</div>
+    <div class="countdown reveal">
+      <div class="cd-cell"><div class="cd-num" id="cd-d">--</div><div class="cd-label">天 DAY</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-h">--</div><div class="cd-label">时 HOUR</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-m">--</div><div class="cd-label">分 MIN</div></div>
+      <div class="cd-cell"><div class="cd-num" id="cd-s">--</div><div class="cd-label">秒 SEC</div></div>
+    </div>
+    <div class="cd-note reveal">距离 <b>2027-08-02</b> 到期还有 <b id="cd-total">--</b> 天，届时记得续费喵。</div>
+  </main>
+
+  <footer>
+    <div class="foot-row">
+      <span>© <span id="year">2026</span> 伏虎.cc</span>
+      <a href="https://github.com/ciallo0721-cmd" target="_blank" rel="noopener">ciallo0721-cmd</a>
+      <span>Hosted on GitHub Pages</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  /* ---------- 年份 ---------- */
+  document.getElementById("year").textContent = new Date().getFullYear();
+
+  /* ---------- 复制域名 ---------- */
+  var DOMAIN = "伏虎.cc";
+  var btn = document.getElementById("copy-btn");
+  var timer = null;
+
+  function flash(text) {
+    btn.textContent = text;
+    btn.classList.add("done");
+    clearTimeout(timer);
+    timer = setTimeout(function () {
+      btn.textContent = "复制域名";
+      btn.classList.remove("done");
+    }, 1600);
+  }
+
+  function legacyCopy(text) {
+    var ta = document.createElement("textarea");
+    ta.value = text;
+    ta.setAttribute("readonly", "");
+    ta.style.position = "fixed";
+    ta.style.opacity = "0";
+    document.body.appendChild(ta);
+    ta.select();
+    var ok = false;
+    try { ok = document.execCommand("copy"); } catch (e) { ok = false; }
+    document.body.removeChild(ta);
+    return ok;
+  }
+
+  btn.addEventListener("click", function () {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(DOMAIN).then(function () {
+        flash("已复制 ✓");
+      }).catch(function () {
+        flash(legacyCopy(DOMAIN) ? "已复制 ✓" : "复制失败");
+      });
+    } else {
+      flash(legacyCopy(DOMAIN) ? "已复制 ✓" : "复制失败");
+    }
+  });
+
+  /* ---------- 到期倒计时 ---------- */
+  var EXPIRE = new Date("2027-08-02T00:00:00+08:00").getTime();
+  var el = {
+    d: document.getElementById("cd-d"),
+    h: document.getElementById("cd-h"),
+    m: document.getElementById("cd-m"),
+    s: document.getElementById("cd-s"),
+    t: document.getElementById("cd-total")
+  };
+
+  function pad(n) { return n < 10 ? "0" + n : String(n); }
+
+  function tick() {
+    var diff = EXPIRE - Date.now();
+    if (diff <= 0) {
+      el.d.textContent = el.h.textContent = el.m.textContent = el.s.textContent = "00";
+      el.t.textContent = "0";
+      return;
+    }
+    var sec = Math.floor(diff / 1000);
+    var days = Math.floor(sec / 86400);
+    var hours = Math.floor((sec % 86400) / 3600);
+    var mins = Math.floor((sec % 3600) / 60);
+    el.d.textContent = days;
+    el.h.textContent = pad(hours);
+    el.m.textContent = pad(mins);
+    el.s.textContent = pad(sec % 60);
+    el.t.textContent = days;
+  }
+
+  tick();
+  setInterval(tick, 1000);
+
+  /* ---------- 滚动入场 ---------- */
+  var reveals = document.querySelectorAll(".reveal");
+  if ("IntersectionObserver" in window && !reduce) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("on");
+          io.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+    reveals.forEach(function (node, i) {
+      node.style.transitionDelay = (i % 4) * 70 + "ms";
+      io.observe(node);
+    });
+  } else {
+    reveals.forEach(function (node) { node.classList.add("on"); });
+  }
+
+  /* ---------- 浮尘粒子 ---------- */
+  var canvas = document.getElementById("dust");
+  if (!canvas || reduce) return;
+
+  var ctx = canvas.getContext("2d");
+  var particles = [];
+  var dpr = Math.min(window.devicePixelRatio || 1, 2);
+  var w = 0, h = 0;
+
+  function resize() {
+    w = window.innerWidth;
+    h = window.innerHeight;
+    canvas.width = Math.floor(w * dpr);
+    canvas.height = Math.floor(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    build();
+  }
+
+  function build() {
+    var count = Math.min(70, Math.max(24, Math.round((w * h) / 26000)));
+    particles = [];
+    for (var i = 0; i < count; i++) {
+      particles.push({
+        x: Math.random() * w,
+        y: Math.random() * h,
+        r: Math.random() * 1.6 + 0.4,
+        vx: (Math.random() - 0.5) * 0.24,
+        vy: -(Math.random() * 0.3 + 0.08),
+        a: Math.random() * 0.5 + 0.15,
+        tw: Math.random() * 0.02 + 0.006
+      });
+    }
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, w, h);
+    for (var i = 0; i < particles.length; i++) {
+      var p = particles[i];
+      p.x += p.vx;
+      p.y += p.vy;
+      p.a += p.tw;
+      if (p.a > 0.68 || p.a < 0.1) p.tw *= -1;
+      if (p.y < -8) { p.y = h + 8; p.x = Math.random() * w; }
+      if (p.x < -8) p.x = w + 8;
+      if (p.x > w + 8) p.x = -8;
+
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(232, 176, 75, " + p.a.toFixed(3) + ")";
+      ctx.fill();
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  requestAnimationFrame(draw);
+})();
+</script>
+</body>
+</html>
